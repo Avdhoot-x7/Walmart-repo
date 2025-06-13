@@ -1,3 +1,9 @@
+name,expiryDate,stock,salesPerDay,location
+Amul Milk,2025-06-15,50,10,Bangalore
+Brown Bread,2025-06-12,30,5,Delhi
+Tomato Ketchup,2025-06-25,100,8,Mumbai
+Paneer,2025-06-13,20,3,Hyderabad
+Eggs,2025-06-11,60,15,Kolkata
 Milk,2024-05-01,50,5,Refrigerated
 Bread,2024-04-15,30,8,Bakery
 Eggs,2024-04-20,100,10,Dairy
