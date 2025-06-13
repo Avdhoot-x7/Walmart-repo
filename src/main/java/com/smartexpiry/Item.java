@@ -1,3 +1,5 @@
+package com.smartexpiry;
+
 public class Item {
     private final String name;
     private final java.time.LocalDate expiryDate;
