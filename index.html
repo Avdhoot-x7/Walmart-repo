@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartExpiry Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        tr.high {
+            background-color: #f8d7da;
+        }
+        tr.medium {
+            background-color: #fff3cd;
+        }
+        tr.low {
+            background-color: #d4edda;
+        }
+        @media (max-width: 600px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr {
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+            }
+            td {
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+            }
+            td:before {
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+            }
+            td:nth-of-type(1):before { content: "Name"; }
+            td:nth-of-type(2):before { content: "Days to Expiry"; }
+            td:nth-of-type(3):before { content: "Risk Level"; }
+            td:nth-of-type(4):before { content: "Suggested Discount"; }
+            td:nth-of-type(5):before { content: "Donation Suggestion"; }
+        }
+    </style>
+</head>
+<body>
+    <header>SmartExpiry Dashboard</header>
+    <table id="inventory-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Days to Expiry</th>
+                <th>Risk Level</th>
+                <th>Suggested Discount</th>
+                <th>Donation Suggestion</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.querySelector('#inventory-table tbody');
+                data.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.classList.add(item.riskLevel.toLowerCase());
+
+                    tr.innerHTML = `
+                        <td>${item.name}</td>
+                        <td>${item.daysToExpiry}</td>
+                        <td>${item.riskLevel}</td>
+                        <td>${item.suggestedDiscount}</td>
+                        <td>${item.donationSuggestion}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            })
+            .catch(err => {
+                console.error('Failed to load data.json', err);
+            });
+    </script>
+</body>
+</html>
