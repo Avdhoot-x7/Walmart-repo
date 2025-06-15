@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Milk",
+        "daysToExpiry": 3,
+        "riskLevel": "HIGH",
+        "suggestedDiscount": "30%",
+        "donationSuggestion": "Donate to local shelter"
+    },
+    {
+        "name": "Bread",
+        "daysToExpiry": 7,
+        "riskLevel": "MEDIUM",
+        "suggestedDiscount": "20%",
+        "donationSuggestion": "Donate to food bank"
+    },
+    {
+        "name": "Eggs",
+        "daysToExpiry": 14,
+        "riskLevel": "LOW",
+        "suggestedDiscount": "10%",
+        "donationSuggestion": "N/A"
+    }
+]
