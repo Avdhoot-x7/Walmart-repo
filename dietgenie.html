@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DietGenie-AI</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, select, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #9E9E9E;
+        }
+        #result {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DietGenie-AI</h1>
+        <form id="dietForm">
+            <input type="number" id="age" placeholder="Age" required>
+            <input type="number" id="weight" placeholder="Weight" required>
+            <select id="goal" required>
+                <option value="lose">Lose Weight</option>
+                <option value="maintain">Maintain Weight</option>
+                <option value="gain">Gain Weight</option>
+            </select>
+            <input type="file" id="foodImage" accept="image/*">
+            <button type="submit" id="submitBtn">Submit</button>
+        </form>
+        <div id="result">
+            <strong>Predicted Risk Score: 89%</strong><br>
+            <span>AI Advice: Very risky to eat frequently. Try to reduce intake. Consider lower-sugar alternatives.</span>
+        </div>
+    </div>
+<script>
+    const form = document.getElementById('dietForm');
+    const resultBox = document.getElementById('result');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        setTimeout(() => {
+            resultBox.style.display = 'block';
+            submitBtn.disabled = false;
+        }, 3000 + Math.random() * 2000);
+    });
+</script>
+</body>
+</html>
